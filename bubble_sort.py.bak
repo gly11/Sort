@@ -1,0 +1,41 @@
+# coding:utf8
+# new sort
+import time
+
+
+start = time.clock()
+
+
+READ = open("NUM.txt", "r")
+document = READ.read()
+list1 = document.split(" ")
+
+lenth = len(list1)
+
+for i in range(lenth):
+	list1[i] = int(list1[i])
+
+def bubble_sort(lists):
+    # 冒泡排序
+    count = len(lists)
+    for i in range(0, count):
+        for j in range(i + 1, count):
+            if lists[i] > lists[j]:
+                lists[i], lists[j] = lists[j], lists[i]
+    return lists
+	
+bubble_sort(list1)
+
+end = time.clock()
+
+WRITE = open("BUBBLE_SORTED.txt", "w")
+
+# WRITE.write(str(insersion_sort(list1)))
+
+for x in range(lenth):
+	WRITE.write(str(list1[x]))
+	if x < lenth-1:
+		WRITE.write(" ")
+		
+
+print('Running time: %s Seconds'%(end-start))
